@@ -1,0 +1,42 @@
+<!-- 
+  使用js创建虚拟DOM元素
+ React 提供了一些API来创建 虚拟DOM
+ var element = React.createElement('h1',{id:'myTitle'},'hello')
+  使用JSX创建虚拟DOM
+  var element = <h1 id="myTitle">hello </h1>
+ 虚拟DOM 最终都会转化为转化为真实的DOM
+ 在编程时只需要操作React的虚拟DOM的相关数据，react会转化为真实的DOM并更新数据
+ -->
+ <html>
+   <head></head>
+   <body>
+     <div id="test">
+
+     </div>
+
+    <script src="https://cdn.bootcss.com/react/16.8.6/cjs/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.8.6/cjs/react-dom-server.browser.development.js"></script>
+    <script src="./babel.min.js"></script>
+    <script type = "text/babel">
+      // 创建虚拟dom
+      var  vdom = <h1>"hello"</h1>
+      // 渲染虚拟DOM 到真实DOM
+      ReactDOM.render(vdom,document.getElementById("test"))
+    </script>
+   </body>
+ </html>
+ <!-- 
+   JSX
+   全称 JavaScript XML
+   是react定义的一种XML的JS扩展语法 浏览器不能识别 需要借助babel
+   用来创建react虚拟DOM元素对象
+   语法 var ele = <h1> hello JSX </h1>
+   注意 不是字符串  也不是HTML标签
+   解析： 遇到标签 <> 解析为html代码  遇到大括号 解析为js代码
+   浏览器不能直接解析JSX代码  需要babel编译成纯JS的代码才能运行
+   只要用了JSX  都要加上<script type = "text/babel"></script>,声明 需要使用babel来处理
+  -->
+  <!-- 创建虚拟DOM的两种方式
+    纯js var element = React.createElement('h1',{id:'myTitle'},'hello')
+    JSX  var element = <h1 id="myTitle">hello </h1>
+  -->
