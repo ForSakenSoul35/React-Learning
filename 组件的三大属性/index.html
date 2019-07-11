@@ -1,0 +1,118 @@
+<html>
+   <head></head>
+   <body>
+     <div id="test"></div>
+     <div id="test1"></div>
+
+     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- <script src="./babel.min.js"></script> -->
+    <script type = "text/babel">
+     class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLikeMe: false
+    };
+    this.handleItemClick = this.handleItemClick.bind(this);
+  }
+  handleItemClick = () => {
+    console.log("点击了");
+    const isLikeMe = !this.state.isLikeMe;
+    this.setState({
+      isLikeMe
+    });
+  };
+  render() {
+    const { isLikeMe, time } = this.state;
+    return (
+      <div>
+        <h2 onClick={this.handleItemClick}>
+          {/*  应该是  将handleItemClick这个函数的引用赋值给 onClick
+      而不是把执行结果赋值给它  */}
+          {isLikeMe ? "喜欢我" : "不喜欢我"}
+        </h2>
+      </div>
+    );
+  }
+}
+      </script>
+   </body>
+ </html>
+ <!-- 
+   Ref 使用
+  import React, { Component } from "react";
+class MyRefs extends Component {
+  constructor(props) {
+    super(props);
+  }
+  handleItemClick = () => {
+    // const input = this.refs.content;
+    // console.log(input.value);
+    console.log(this.input.value);
+  };
+  handleBlur = event => {
+    alert(event.target.value);
+  };
+  render() {
+    return (
+      <div>
+        {/* <input type="text" ref="content" /> */}
+        <input type="text" ref={input => (this.input = input)} />
+        <button onClick={this.handleItemClick}>提示输入</button>
+        <input
+          type="text"
+          placeholder="失去焦点提示内容"
+          onBlur={this.handleBlur}
+        />
+      </div>
+    );
+  }
+}
+export default MyRefs;
+//  需求是获取input的value值
+
+// 两个点
+//  ref 使用
+// 事件处理
+
+
+
+
+  -->
+  <!-- 
+Props使用
+    import React, { Component } from "react";
+import propTypes from "prop-types";
+class MyProps extends Component {
+  render() {
+    console.log(this.props);
+    const defaultProps = {
+      age: 20,
+      sex: "woman"
+    };
+
+    this.propTypes = {
+      name: propTypes.string.isRequired,
+      age: propTypes.number,
+      sex: propTypes.string
+    };
+    console.log(this.propTypes);
+    return (
+      <ul>
+        <li>{this.props.name}</li>
+        <li>{this.props.age}</li>
+        <li>{this.props.sex}</li>
+      </ul>
+    );
+  }
+}
+export default MyProps;
+// 1. props使用
+// 2. default props 和propTypes 类型检查
+// ... 操作符 在对象中的引用
+//  打包  function fn (...args) { ... } fn(1,2,3) 一般用在对象中
+// args =[1,2,3]
+// 解包  const arr1 = [1,2,3] const arr2 = [1,2,...arr1,3] 一般用在数组中
+
+   -->
